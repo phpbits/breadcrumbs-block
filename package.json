@@ -35,6 +35,7 @@
 		"@wordpress/i18n": "^3.6.1",
 		"@wordpress/scripts": "^5.1.0",
 		"babel-eslint": "^10.0.3",
+		"browser-sync-webpack-plugin": "^2.2.2",
 		"classnames": "^2.2.6",
 		"css-loader": "^3.2.0",
 		"eslint-plugin-eslint-comments": "^3.1.2",
@@ -65,5 +66,8 @@
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js",
 		"makepot": "wp i18n make-pot . languages/postslist-block.pot --exclude=node_modules,vendor,build"
+	},
+	"dependencies": {
+		"browser-sync": "^2.26.7"
 	}
 }

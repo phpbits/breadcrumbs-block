@@ -178,7 +178,7 @@ var keywords = [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__["__"])("brea
 var settings = {
   title: title,
   description: description,
-  icon: "excerpt-view",
+  icon: "editor-bold",
   keywords: keywords,
   attributes: attributes,
   supports: {

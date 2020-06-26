@@ -27,7 +27,7 @@ const keywords = [
 const settings = {
 	title,
 	description,
-	icon: "excerpt-view",
+	icon: "editor-bold",
 	keywords,
 	attributes,
 	supports: {
