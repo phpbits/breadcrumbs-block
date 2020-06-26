@@ -3,6 +3,7 @@
  * Load assets for our blocks.
  *
  * @package Breadcrumbs_Block
+ */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
