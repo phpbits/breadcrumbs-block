@@ -114,7 +114,7 @@ if ( ! class_exists( 'Breadcrumbs_Block' ) ) :
 		 */
 		private function includes() {
 			require_once BREADCRUMBSBLOCK_PLUGIN_DIR . 'includes/class-breadcrumbs-block-assets.php';
-			// require_once BREADCRUMBSBLOCK_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
+			require_once BREADCRUMBSBLOCK_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 		}
 		/**
 		 * Load actions

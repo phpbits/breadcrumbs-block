@@ -1,10 +1,10 @@
-const defaultConfig = require('./node_modules/@wordpress/scripts/config/webpack.config.js');
-const path = require('path');
-const postcssPresetEnv = require('postcss-preset-env');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config.js' );
+const path = require( 'path' );
+const postcssPresetEnv = require( 'postcss-preset-env' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
+const OptimizeCSSAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
+const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
 
 // Check if local.json exists
 try {
@@ -14,12 +14,11 @@ try {
 	var localEnv = 'https://iceberg.test';
 }
 
-
 module.exports = {
 	...defaultConfig,
 	entry: {
-		index: path.resolve(process.cwd(), "src", "index.js"),
-		style: path.resolve(process.cwd(), "src", "style.scss"),
+		index: path.resolve( process.cwd(), 'src', 'index.js' ),
+		style: path.resolve( process.cwd(), 'src', 'style.scss' ),
 		// editor: path.resolve( process.cwd(), 'src', 'editor.scss' ),
 	},
 	optimization: {
@@ -27,21 +26,21 @@ module.exports = {
 		splitChunks: {
 			cacheGroups: {
 				editor: {
-					name: "editor",
+					name: 'editor',
 					test: /editor\.(sc|sa|c)ss$/,
-					chunks: "all",
+					chunks: 'all',
 					enforce: true,
 				},
 				style: {
-					name: "style",
+					name: 'style',
 					test: /style\.(sc|sa|c)ss$/,
-					chunks: "all",
+					chunks: 'all',
 					enforce: true,
 				},
 				admin: {
-					name: "admin",
+					name: 'admin',
 					test: /admin\.(sc|sa|c)ss$/,
-					chunks: "all",
+					chunks: 'all',
 					enforce: true,
 				},
 				default: false,
@@ -60,28 +59,28 @@ module.exports = {
 						loader: MiniCssExtractPlugin.loader,
 					},
 					{
-						loader: "css-loader",
+						loader: 'css-loader',
 					},
 					{
-						loader: "sass-loader",
+						loader: 'sass-loader',
 					},
 					{
-						loader: "postcss-loader",
+						loader: 'postcss-loader',
 						options: {
-							ident: "postcss",
+							ident: 'postcss',
 							plugins: () => [
-								postcssPresetEnv({
+								postcssPresetEnv( {
 									stage: 3,
 									features: {
-										"custom-media-queries": {
+										'custom-media-queries': {
 											preserve: false,
 										},
-										"custom-properties": {
+										'custom-properties': {
 											preserve: true,
 										},
-										"nesting-rules": true,
+										'nesting-rules': true,
 									},
-								}),
+								} ),
 							],
 						},
 					},
@@ -91,39 +90,39 @@ module.exports = {
 	},
 	plugins: [
 		...defaultConfig.plugins,
-		new MiniCssExtractPlugin({
-			filename: "[name].build.css",
-		}),
+		new MiniCssExtractPlugin( {
+			filename: '[name].build.css',
+		} ),
 		new BrowserSyncPlugin(
 			{
-				host: "localhost",
+				host: 'localhost',
 				port: 3000,
 				proxy: localEnv,
 				open: true,
-				files: ["build/*.php", "build/*.js", "build/*.css"],
+				files: [ 'build/*.php', 'build/*.js', 'build/*.css' ],
 			},
 			{
 				injectCss: true,
 				reload: false,
 			}
 		),
-		new OptimizeCSSAssetsPlugin({
+		new OptimizeCSSAssetsPlugin( {
 			cssProcessorPluginOptions: {
-				preset: ["default", { discardComments: { removeAll: true } }],
+				preset: [ 'default', { discardComments: { removeAll: true } } ],
 			},
-		}),
-		new IgnoreEmitPlugin([
-			"editor.js",
-			"style.js",
-			"admin.js",
-			"index.deps.json",
-			"editor.deps.json",
-			"style.deps.json",
-			"admin.deps.json",
-			"index.js.map",
-			"editor.build.css.map",
-			"style.build.css.map",
-			"admin.build.css.map",
-		]),
+		} ),
+		new IgnoreEmitPlugin( [
+			'editor.js',
+			'style.js',
+			'admin.js',
+			'index.deps.json',
+			'editor.deps.json',
+			'style.deps.json',
+			'admin.deps.json',
+			'index.js.map',
+			'editor.build.css.map',
+			'style.build.css.map',
+			'admin.build.css.map',
+		] ),
 	],
 };

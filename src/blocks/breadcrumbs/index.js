@@ -1,41 +1,39 @@
 /**
  * WordPress dependencies
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
  */
-import metadata from "./block.json";
-import Edit from "./components/edit";
+import metadata from './block.json';
+import Edit from './components/edit';
 
 /**
  * Block constants
  */
 const { name, category, attributes } = metadata;
-const title = __("Breadcrumbs", "breadcrumbs-block");
+const title = __( 'Breadcrumbs', 'breadcrumbs-block' );
 const description = __(
-	"Display breadcrumbs for the current post.",
-	"breadcrumbs-block"
+	'Display breadcrumbs for the current post.',
+	'breadcrumbs-block'
 );
 const keywords = [
-	__("breadcrumbs", "breadcrumbs-block"),
-	__("post", "breadcrumbs-block"),
-	__("blog", "breadcrumbs-block"),
+	__( 'breadcrumbs', 'breadcrumbs-block' ),
+	__( 'post', 'breadcrumbs-block' ),
+	__( 'blog', 'breadcrumbs-block' ),
 ];
 
 const settings = {
 	title,
 	description,
-	icon: "editor-bold",
+	icon: 'editor-bold',
 	keywords,
 	attributes,
 	supports: {
-		align: ["wide"],
+		align: [ 'wide' ],
 	},
-	edit() {
-		return null;
-	},
+	edit: Edit,
 	save() {
 		return null;
 	},

@@ -12,18 +12,18 @@
 /**
  * WordPress dependencies
  */
-import { registerBlockType } from "@wordpress/blocks";
+import { registerBlockType } from '@wordpress/blocks';
 
 // Register Blocks
-import * as breadcrumbs from "./blocks/breadcrumbs";
+import * as breadcrumbs from './blocks/breadcrumbs';
 
 export function registerBlocks() {
-	[breadcrumbs].forEach((block) => {
-		if (!block) {
+	[ breadcrumbs ].forEach( ( block ) => {
+		if ( ! block ) {
 			// return;
 		}
 		const { name, category, settings } = block;
-		registerBlockType(`${name}`, { category, ...settings });
-	});
+		registerBlockType( `${ name }`, { category, ...settings } );
+	} );
 }
 registerBlocks();
