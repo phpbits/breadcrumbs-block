@@ -1,0 +1,10 @@
+{
+	"name": "phpbits/breadcrumbs",
+	"category": "design",
+	"attributes": {
+		"taxonomy": {
+			"type": "string",
+			"default": "post_tag"
+		}
+	}
+}

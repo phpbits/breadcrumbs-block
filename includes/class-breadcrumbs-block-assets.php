@@ -56,7 +56,7 @@ class Breadcrumbs_Block_Assets {
 		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
 
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
-		add_action( 'init', array( $this, 'editor_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'editor_assets' ) );
 	}
 
 	/**
@@ -82,15 +82,8 @@ class Breadcrumbs_Block_Assets {
 	 */
 	public function editor_assets() {
 
-		if ( ! is_admin() ) {
-			return;
-		}
-		if ( ! $this->is_edit_or_new_admin_page() ) {
-			return;
-		}
-
 		// Styles.
-		wp_register_style(
+		wp_enqueue_style(
 			$this->slug . '-editor',
 			$this->url . '/build/editor.build.css',
 			array(),
@@ -98,10 +91,10 @@ class Breadcrumbs_Block_Assets {
 		);
 
 		// Scripts.
-		wp_register_script(
+		wp_enqueue_script(
 			$this->slug . '-editor',
 			$this->url . '/build/index.js',
-			array_merge( $this->asset_file( 'editor', 'dependencies' ), array( 'wp-api', 'wp-compose' ) ),
+			array_merge( $this->asset_file( 'index', 'dependencies' ), array( 'wp-api', 'wp-compose' ) ),
 			BREADCRUMBSBLOCK_VERSION,
 			false
 		);
@@ -114,7 +107,7 @@ class Breadcrumbs_Block_Assets {
 	 * @param string $handle Ass handle to reference.
 	 * @param string $key What do we want to return: version or dependencies.
 	 */
-	public static function asset_file( $handle, $key ) {
+	public function asset_file( $handle, $key ) {
 		$default_asset_file = array(
 			'dependencies' => array(),
 			'version'      => BREADCRUMBSBLOCK_VERSION,
@@ -130,17 +123,6 @@ class Breadcrumbs_Block_Assets {
 		if ( 'dependencies' === $key ) {
 			return $asset_file['dependencies'];
 		}
-	}
-
-	/**
-	 * Checks if admin page is the 'edit' or 'new-post' screen.
-	 *
-	 * @return bool true or false
-	 */
-	public function is_edit_or_new_admin_page() {
-		global $pagenow;
-		// phpcs:ignore
-		return ( is_admin() && ( $pagenow === 'post.php' || $pagenow === 'post-new.php' ) );
 	}
 
 }
