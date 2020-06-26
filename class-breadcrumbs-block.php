@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Breadcrumbs Block
- * Plugin URI: http://wordpress.org/phpbits/breadcrumbs-block
+ * Plugin URI: http://wordpress.org/plugins/breadcrumbs-block
  * Description: Breadcrumbs block for WordPress Gutenberg block editor.
  * Version: 1.0
  * Author: Jeffrey Carandang
@@ -113,7 +113,7 @@ if ( ! class_exists( 'Breadcrumbs_Block' ) ) :
 		 * @return void
 		 */
 		private function includes() {
-			// require_once BREADCRUMBSBLOCK_PLUGIN_DIR . 'includes/class-postslist-block-assets.php';
+			require_once BREADCRUMBSBLOCK_PLUGIN_DIR . 'includes/class-breadcrumbs-block-assets.php';
 			// require_once BREADCRUMBSBLOCK_PLUGIN_DIR . 'includes/get-dynamic-blocks.php';
 		}
 		/**
