@@ -72,7 +72,7 @@
 		"makepot": "wp i18n make-pot . languages/postslist-block.pot --exclude=node_modules,vendor,build"
 	},
 	"dependencies": {
-		"browser-sync": "^2.26.7"
+		"browser-sync": "^2.29.3"
 	},
 	"lint-staged": {
 		"*.scss": [
